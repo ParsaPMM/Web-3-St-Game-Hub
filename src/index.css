@@ -1,0 +1,22 @@
+:root{
+    --header-color:#111827;
+    --card-color:#1F2937;
+    --pink-color:#A855F7;
+    --background-color:#030712;
+}
+
+.header-color {
+    background-color: var(--header-color);
+}
+
+.card-color {
+    background-color: var(--card-color);
+}
+
+.pink-color {
+    background-color: var(--pink-color);
+}
+
+.background-color {
+    background-color: var(--background-color) !important;
+}

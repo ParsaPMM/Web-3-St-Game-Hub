@@ -1,27 +1,45 @@
-import { Box, GridItem, Heading, SimpleGrid } from "@chakra-ui/react"
-import GameList from "./components/GamesTest"
-import GenreList from "./components/GenreList"
-import Header from "./components/Header"
-import GameGrid from "./components/GameGrid"
+import { Box, Grid, GridItem, Heading } from "@chakra-ui/react";
+import GenreList from "./components/GenreList";
+import Header from "./components/Header";
+import GameGrid from "./components/GameGrid";
+import { useState } from "react";
+
+// #030712 - background
+// #1F2937 - card body
+// #A855F7 - pink
+//
+// #111827 - header color
 
 function App() {
-  
+  const [selectedGenreId, setSelectedGenreId] = useState(null);
+
   return (
-    <SimpleGrid columns={{base:1,md:4}}>
-      <GridItem colSpan={{base:4}}>
+    <Grid
+      templateColumns={{
+        base: `"1fr"`,
+        md: `"300px 1fr 1fr 1fr"`,
+      }}
+      className="background-color"
+    >
+      <GridItem colSpan={{ base: 4 }}>
         <Header />
       </GridItem>
-      <GridItem bgColor={"gray.800"} mt={10} paddingLeft={3} colSpan={{base:1}}>
-        <Heading my={5} textAlign={"center"} as={"h2"}>
-          Genre List
-        </Heading>
-        <GenreList />
+      <GridItem className="header-color" colSpan={{ base: 1 }}>
+        <Box position={"sticky"} py={5} top={"0"}>
+          <Heading mb={5} textAlign={"center"} as={"h2"}>
+            Genre List
+          </Heading>
+          <GenreList
+            selectedGenreId={selectedGenreId}
+            handleOnGenreClick={(genreId) => setSelectedGenreId(genreId)}
+          />
+        </Box>
       </GridItem>
-      <GridItem mt={10} colSpan={{base:3}}>
-            <GameGrid />
+      <GridItem px={10} mt={10} colSpan={{ base: 3 }}>
+        <GameGrid selectedGenreId={selectedGenreId} />
       </GridItem>
-    </SimpleGrid>
-  )
+    </Grid>
+  );
 }
 
-export default App
+export default App;

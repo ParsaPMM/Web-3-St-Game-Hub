@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 const axiosInstance = axios.create({
     baseURL:"https://api.rawg.io/api",
     params:{
-        key:"cc610a1f0ed247409083aff5c24baa62"
+        key:"4393474aa80b4fa5a492bd7c213f17ab"
     }
 });
 
@@ -20,8 +20,8 @@ class APIClient {
         this.endpoint = endpoint;
     }
 
-    getAll = <T>() => {
-        return axiosInstance.get<ApiResponse<T>>(this.endpoint).then(response => response.data);
+    getAll = <T>(confObj:AxiosRequestConfig) => {
+        return axiosInstance.get<ApiResponse<T>>(this.endpoint,confObj).then(response => response.data);
     }
 
     get = <T>(id:number) => {

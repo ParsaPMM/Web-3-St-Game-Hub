@@ -1,22 +1,21 @@
 
 import {useQuery } from "@tanstack/react-query"
 import APIClient from "@/services/apiClient";
+import { Game } from "@/types/Game";
 
 const apiClient  = new APIClient("/games")
 
-interface Game {
-    id: number,
-    slug: string,
-    name: string,
-    background_image:string;
-    released:string;
-}
 
 
-const useGames = () => (
+const useGames = (genreId:number) => (
     useQuery({
-        queryKey:["games"],
-        queryFn:apiClient.getAll<Game>
+        queryKey:["games",genreId],
+        queryFn:() => apiClient.getAll<Game>({
+            params:{
+                genres:genreId
+            }
+        }),
+        staleTime:1000 * 60 * 60 * 24 // 1day
     })
 )
 

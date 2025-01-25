@@ -1,12 +1,18 @@
 import useGenres from "@/hooks/useGenres"
-import { HStack, Image, VStack,Text } from "@chakra-ui/react"
+import { VStack,Text } from "@chakra-ui/react"
 import { Spinner } from "@chakra-ui/react"
 import { FaExclamation } from "react-icons/fa";
 import GenreItem from "./GenreItem";
 
-const GenreList = () => {
+interface Props {
+  selectedGenreId:number;
+  handleOnGenreClick:(genreId:number) => void;
+}
+
+const GenreList = ({selectedGenreId,handleOnGenreClick}:Props) => {
 
   const {data,isPending,isError} = useGenres()
+  
 
   if(isPending){
     return <Spinner />
@@ -23,7 +29,7 @@ const GenreList = () => {
   return (
     <VStack alignItems={"start"} >
         {data?.results.map(genre => (
-            <GenreItem key={genre.id} genre={genre} />
+            <GenreItem selected={selectedGenreId === genre.id} handleOnSelect={(selectedGenreId) => handleOnGenreClick(selectedGenreId)} key={genre.id} genre={genre} />
         ))}
     </VStack>
   )
