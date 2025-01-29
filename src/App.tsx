@@ -11,7 +11,7 @@ import { useState } from "react";
 // #111827 - header color
 
 function App() {
-  const [selectedGenreId, setSelectedGenreId] = useState(null);
+  const [selectedGenreId, setSelectedGenreId] = useState<number | null>(null);
 
   return (
     <Grid
@@ -24,8 +24,8 @@ function App() {
       <GridItem colSpan={{ base: 4 }}>
         <Header />
       </GridItem>
-      <GridItem className="header-color" colSpan={{ base: 1 }}>
-        <Box position={"sticky"} py={5} top={"0"}>
+      <GridItem className="header-color">
+        <Box  position={"sticky"} py={5} top={"0"}>
           <Heading mb={5} textAlign={"center"} as={"h2"}>
             Genre List
           </Heading>
@@ -35,7 +35,7 @@ function App() {
           />
         </Box>
       </GridItem>
-      <GridItem px={10} mt={10} colSpan={{ base: 3 }}>
+      <GridItem px={10} mt={10} colSpan={{ base: 1, md:3 }}>
         <GameGrid selectedGenreId={selectedGenreId} />
       </GridItem>
     </Grid>

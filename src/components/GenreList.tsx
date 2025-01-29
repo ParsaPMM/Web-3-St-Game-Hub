@@ -3,9 +3,10 @@ import { VStack,Text } from "@chakra-ui/react"
 import { Spinner } from "@chakra-ui/react"
 import { FaExclamation } from "react-icons/fa";
 import GenreItem from "./GenreItem";
+import GenreListSkeleton from "./SkeletonComponents/GenreListSkeleton";
 
 interface Props {
-  selectedGenreId:number;
+  selectedGenreId:number | null;
   handleOnGenreClick:(genreId:number) => void;
 }
 
@@ -15,7 +16,7 @@ const GenreList = ({selectedGenreId,handleOnGenreClick}:Props) => {
   
 
   if(isPending){
-    return <Spinner />
+    return <GenreListSkeleton />
   }
 
   if(isError) {
