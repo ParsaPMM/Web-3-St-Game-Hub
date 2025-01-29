@@ -16,12 +16,12 @@ function App() {
   return (
     <Grid
       templateColumns={{
-        base: `"1fr"`,
-        md: `"300px 1fr 1fr 1fr"`,
+        base: "1fr",
+        md: "300px 1fr",
       }}
       className="background-color"
     >
-      <GridItem colSpan={{ base: 4 }}>
+      <GridItem colSpan={{ base: 1, md: 2 }}>
         <Header />
       </GridItem>
       <GridItem className="header-color">
@@ -35,7 +35,7 @@ function App() {
           />
         </Box>
       </GridItem>
-      <GridItem px={10} mt={10} colSpan={{ base: 1, md:3 }}>
+      <GridItem px={10} mt={10} >
         <GameGrid selectedGenreId={selectedGenreId} />
       </GridItem>
     </Grid>
