@@ -3,13 +3,13 @@ import axios, { AxiosRequestConfig } from "axios";
 const axiosInstance = axios.create({
     baseURL:"https://api.rawg.io/api",
     params:{
-        key:"4393474aa80b4fa5a492bd7c213f17ab"
+        key:"1a02a3b2d4d5415db2d245aafe8e32c5"
     }
 });
 
 interface ApiResponse<T> {
     count:number;
-    results: T[]
+    results: T[];
 }
 
 
@@ -20,7 +20,7 @@ class APIClient {
         this.endpoint = endpoint;
     }
 
-    getAll = <T>(confObj:AxiosRequestConfig) => {
+    getAll = <T>(confObj?:AxiosRequestConfig) => {
         return axiosInstance.get<ApiResponse<T>>(this.endpoint,confObj).then(response => response.data);
     }
 

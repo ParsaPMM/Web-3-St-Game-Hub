@@ -7,7 +7,7 @@ const apiClient  = new APIClient("/games")
 
 
 
-const useGames = (genreId:number,pageSize:number) => (
+const useGames = (genreId:number | null,pageSize:number) => (
     useInfiniteQuery({
         queryKey:["games",genreId],
         queryFn: ({pageParam}) => apiClient.getAll<Game>({

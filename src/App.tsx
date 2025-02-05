@@ -10,9 +10,11 @@ import { useState } from "react";
 //
 // #111827 - header color
 
+
+
 function App() {
   const [selectedGenreId, setSelectedGenreId] = useState<number | null>(null);
-
+  
   return (
     <Grid
       templateColumns={{
@@ -24,7 +26,7 @@ function App() {
       <GridItem colSpan={{ base: 1, md: 2 }}>
         <Header />
       </GridItem>
-      <GridItem className="header-color">
+      <GridItem hideBelow={"md"} className="header-color">
         <Box  position={"sticky"} py={5} top={"0"}>
           <Heading mb={5} textAlign={"center"} as={"h2"}>
             Genre List
